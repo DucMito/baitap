@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>People by City</h1>
+<div th:each="city : ${peopleByCity.keySet()}">
+    <h2>[[${city}]]</h2>
+    <ul>
+        <li th:each="person : ${peopleByCity.get(city)}" th:text="${person.name}"></li>
+    </ul>
+</div>
+</body>
+</html>

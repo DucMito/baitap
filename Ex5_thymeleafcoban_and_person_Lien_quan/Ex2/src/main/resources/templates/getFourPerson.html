@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+</head>
+<body>
+<h2 th:if="${person == null}">Person not found!!!!</h2>
+
+<div th:if="${person != null}">
+    <h2>Chi tiết person</h2>
+    <p>ID: <span th:text="${person.id}"></span></p>
+    <p>Full Name: <span th:text="${person.fullName}"></span></p>
+    <p>Job: <span th:text="${person.job}"></span></p>
+    <p>Gender: <span th:text="${person.gender}"></span></p>
+    <p>City: <span th:text="${person.city}"></span></p>
+    <p>Salary: <span th:text="${person.salary}"></span></p>
+    <p>Birthday: <span th:text="${person.birthday}"></span></p>
+
+    <h2>Four People</h2>
+    <ul th:if="${fourPeople}">
+        <li th:each="fourPerson : ${fourPeople}">
+            <a th:href="@{'/person/' + ${fourPerson.id}}" th:text="${fourPerson.fullName}"></a>
+        </li>
+    </ul>
+    <p th:unless="${fourPeople}">No people found.</p>
+</div>
+</body>
+</html>

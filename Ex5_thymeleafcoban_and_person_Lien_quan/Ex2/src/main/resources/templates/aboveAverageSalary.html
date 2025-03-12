@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Above Average Salary</title>
+</head>
+<body>
+<h1>People Above Average Salary</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Job</th>
+    <th>Salary</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="person : ${aboveAverage}">
+    <td th:text="${person.name}"></td>
+    <td th:text="${person.city}"></td>
+    <td th:text="${person.job}"></td>
+    <td th:text="${person.salary}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

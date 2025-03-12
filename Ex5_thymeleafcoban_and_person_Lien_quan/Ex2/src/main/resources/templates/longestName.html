@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Longest Name</title>
+</head>
+<body>
+<h1>Person with Longest Name</h1>
+<div th:if="${longestNamePerson}">
+  <p>Name: <span th:text="${longestNamePerson.name}"></span></p>
+  <p>City: <span th:text="${longestNamePerson.city}"></span></p>
+  <p>Job: <span th:text="${longestNamePerson.job}"></span></p>
+  <p>Salary: <span th:text="${longestNamePerson.salary}"></span></p>
+</div>
+<div th:unless="${longestNamePerson}">
+  <p>No people found.</p>
+</div>
+</body>
+</html>

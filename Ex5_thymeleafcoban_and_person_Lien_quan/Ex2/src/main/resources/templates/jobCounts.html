@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Counts</title>
+</head>
+<body>
+<h1>Job Counts</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Job</th>
+        <th>Count</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="job : ${jobCounts.keySet()}">
+        <td th:text="${job}"></td>
+        <td th:text="${jobCounts.get(job)}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
