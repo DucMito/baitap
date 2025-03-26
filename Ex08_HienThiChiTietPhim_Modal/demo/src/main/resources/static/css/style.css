@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+.narbar-brand img{
+    width: 130px;
+    object-fit: cover;
+}
+
+.movie-poster {
+    height: 250px;
+}
+
+.movie-poster img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.review-author-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1;
+}
+
+.movie-image {
+    width: 40%;
+}
+
+.movie-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.social-img{
+    width: 10%;
+}
+
+li a {
+    text-decoration: none;
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phim bộ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#" >
+                    <img src="https://motchilli.fm/wp-content/uploads/2024/12/cropped-logo-motchill.png" alt="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-light" aria-current="page" href="/">Trang chủ</a>
+                    <a class="nav-link text-light" href="/phim_bo">Phim bộ</a>
+                    <a class="nav-link text-light" href="/phim_chieu_rap">Phim chiếu rạp</a>
+                    <a class="nav-link text-light" href="/phim_le">Phim lẻ</a>
+                    <a class="nav-link text-light" href="#">Quốc gia</a>
+                    <a class="nav-link text-light" href="#">Thể loại</a>
+                    <a class="nav-link text-light" href="#">Mua phim</a>
+                </div>
+                <div>
+                    <a class="nav-link text-light" href="#">Đăng nhập</a>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <section class="py-4 bg-body-tertiary">
+        <div class="container">
+            <div class="d-flex justify-content-between mb-2 align-items-center">
+                <h4>Phim chiếu rạp cập nhập</h4>
+            </div>
+            <div class="row row-gap-3">
+                <div class="col-2" th:each="movie :${moviePage}">
+                    <a th:href="'/phim/' + ${movie.id} + '/' + ${movie.slug}">
+                        <div class="movie-item">
+                            <div class="movie-poster rounded overflow-hidden">
+                                <img th:src="${movie.thumbnail}"
+                                     th:alt="${movie.name}">
+                            </div>
+
+                            <div class="movie-info">
+                                <p class="mt-3 mb-0" th:text="${movie.name}">Chim sẻ lòng bàn tay</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item " th:classappend="${currentPage==1} ? 'disabled'">
+                        <a class="page-link" th:href="@{/phim_bo(page=${currentPage - 1})}">Previous</a>
+                    </li>
+                    <li class="page-item" th:each="pageNumber : ${#numbers.sequence(0, totalPages - 1)}">
+                        <a class="page-link" th:href="@{/phim_bo(page=${pageNumber+1})}" th:text="${pageNumber + 1}"></a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${currentPage == totalPages} ? 'disabled'">
+                        <a class="page-link" th:href="@{/phim_bo(page=${currentPage + 1})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://motchilli.fm/wp-content/uploads/2024/12/cropped-logo-motchill.png" alt="logo" class="img-fluid mb-3" style="max-width: 150px;">
+                    <p>Motchill - Xem phim Online miễn phí chất lượng cao với phụ đề tiếng việt. Xem phim online nhanh nhất, phim chiếu rạp mới nhất.</p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Danh mục</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Phim chiếu rạp</a></li>
+                        <li><a href="#" class="text-light">Tin tức</a></li>
+                        <li><a href="#" class="text-light">Phim bộ</a></li>
+                        <li><a href="#" class="text-light">Phim lẻ</a></li>
+                        <li><a href="#" class="text-light">TV Show</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Thể loại</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Phim chiếu rạp</a></li>
+                        <li><a href="#" class="text-light">Phim trang chủ</a></li>
+                        <li><a href="#" class="text-light">Phim bộ mỹ</a></li>
+                        <li><a href="#" class="text-light">Phim bộ tv</a></li>
+                        <li><a href="#" class="text-light">Phim hành động</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Điều khoản</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">DMCA</a></li>
+                        <li><a href="#" class="text-light">Liên hệ</a></li>
+                        <li><a href="#" class="text-light">Privacy</a></li>
+                        <li><a href="#" class="text-light">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Social</h5>
+                    <div class="social-img">
+                        <img src="data:image/jpeg;base64,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" alt="">
+                        <img class="mt-3" src="data:image/jpeg;base64,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" alt="">
+                        <img class="mt-3" src="data:image/jpeg;base64,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" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script th:href=""></script>
+
+  </body>
+</html>
